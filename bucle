@@ -1,0 +1,32 @@
+// Bucle para un LED en Arduio
+// Primero vamos a probar con C y simular salidas por el puerto serie. 
+// Finalmente, escribiremos en los puertos analógicos o digitales
+
+
+// declaración de variables
+int sentido, contador, paso, nivel, MAX, MIN;
+String s;
+
+// declaración de puertos
+
+
+// Setup
+void setup (){
+ sentido = 1;
+ contador = 0;
+ paso = 50;
+ nivel = 0;
+ MAX = 500;
+ MIN = -500;
+ Serial.begin(9600);
+}
+
+
+// Programa principal
+void main (){
+  contador++;
+  nivel = nivel + (sentido*paso);
+  if(nivel > MAX || nivel<MIN) sentido=-sentido;
+  s = "round " + String(contador) + ": " + String(nivel); 
+  Serial.println(s);
+}
